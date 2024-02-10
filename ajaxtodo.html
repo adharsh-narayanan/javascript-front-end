@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX - ToDo</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- table -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="mt-5 text-success text-center">Todo List</h1>
+                <table class="table mt-4 border shadow rounded">
+                    <thead>
+                        <tr>
+                            <th class="p-3 bg-success text-light">USER ID</th>
+                            <th class="p-3 bg-success text-light">ID</th>
+                            <th class="p-3 bg-success text-light">TITLE</th>
+                            <th class="p-3 bg-success text-light">COMPLETED</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    // ajax make use of  XMLHttpRequest() class----
+    // 1) create an object for the class xmlhttprequest
+    const http = new XMLHttpRequest()
+    // 2) api connection is created using open() method inside xmlhttprequest class
+    http.open('get','https://jsonplaceholder.typicode.com/todos')
+    // 3) send request  using send() method in xmlhttprequest class
+    http.send()
+   // console.log(http.readyState);    //.readyState is a variable inside xmlhttprequest class..its value changes when send() request is given ..its value ranges from 1 to 4..  readyState==4 is when data is fetched
+    http.onreadystatechange = ()=>{    // onreadystatechange is an arrow function inside xmlHttpRequest() class..
+        console.log(http.readyState);
+        if(http.readyState==4){    // value ==4 when values get fetched  ..the data will be in jSON format
+            // success response
+            if(http.status>=200 && http.status<300){    // .status shows the response series....success series is between 200-299  
+            // console.log(http.responseText);
+            let alltodolist = JSON.parse(http.responseText)  //responseText is used to show data ..data will be in JSON format initially  here it is converted into array of object and stored in a variable
+            console.log(alltodolist);   //fetching each item from the array
+                alltodolist.forEach(item=>{ //+= to fetch all items else only the last item get fetched
+                    result.innerHTML += `       
+                        <tr>
+                            <td>${item.userId}</td>
+                            <td>${item.id}</td>
+                            <td>${item.title}</td>
+                            <td>${item.completed}</td>
+                        </tr>`
+                })
+            }
+            else{
+                console.log('no data');
+            }
+        }
+        else{
+            console.log('no data');
+        }
+    }
+</script>
+</html>

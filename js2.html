@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1bh1, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JavaScript</h1>
+    <h2 id="dom" class="dom">DOM</h2>
+    <h2 class="dom"> demo</h2>
+
+    <button onclick="change()">click</button>
+</body>
+
+<script>
+    function change(){
+            //getElementById
+
+
+        let content=document.getElementById("dom")
+        //content.innerHTML="Document Object Model"
+
+        //or 
+
+        dom.innerHTML="Document Object Model"
+        dom.style.color="red"
+
+
+
+
+
+
+            //getElementsByTagName
+
+        /* let content=document.getElementsByTagName("h2")
+        console.log(content);
+        content[0].innerHTML="Document Object Model" //it returns a collection[] hence index position should be specified */
+
+
+
+
+
+        //getElementsByClassName
+
+
+        /* let content=document.getElementsByClassName("dom")
+        console.log(content);
+        content[0].innerHTML="Document Object Model" */
+
+
+
+
+
+
+            //querySelector
+
+       /*  let content=document.querySelector(".dom");
+        console.log(content);
+        content.innerHTML="Document Object Model";
+        content.style.color="blue"; */
+
+
+
+
+        //querySelectorAll
+        
+        /* let content=document.querySelectorAll(".dom");
+        console.log(content);
+        content[0].innerHTML="Document Object Model";
+        content[1].style.color="blue";
+        content[0].style.fontSize="50px"; */
+
+
+    }
+</script>
+</html>

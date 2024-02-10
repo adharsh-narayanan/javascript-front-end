@@ -1,0 +1,11 @@
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#clock{
+    height: 100vh;
+    color: rgb(59, 196, 206);
+    font-weight: bolder;
+    font-size: 200px;
+}
