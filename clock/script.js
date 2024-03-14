@@ -10,6 +10,9 @@ console.log(time);//will get displayed on browser console
 const hour= time.getHours()
 const minutes= time.getMinutes()
 const seconds= time.getSeconds()
+const date=time.getDay
+const month=time.getMonth
+const year=time.getFullYear
 
 clock.innerHTML=`${hour}:${minutes}:${seconds}:${hour >=12? `PM`:`AM`}`
 
